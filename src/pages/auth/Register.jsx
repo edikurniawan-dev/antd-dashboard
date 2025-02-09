@@ -47,7 +47,7 @@ export default function Register() {
         </Form.Item>
 
         <Button block type="primary" htmlType="submit">
-          Login
+          Register
         </Button>
       </Form>
 

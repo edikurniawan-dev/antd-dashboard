@@ -1,12 +1,14 @@
-import { ConfigProvider, theme } from "antd";
+import useThemeStore from "../stores/useThemeStore";
+import { ConfigProvider, theme as antdTheme } from "antd";
 import { ThemeProvider } from "antd-style";
 
 export default function AntdConfigProvider({ children }) {
   const {
     token: { colorBgTextActive },
-  } = theme.useToken();
+  } = antdTheme.useToken();
+  const { theme } = useThemeStore();
+  const light = theme === "light";
 
-  const light = true;
   const themeMode = light
     ? {
         primary: "#18181B",
@@ -41,7 +43,7 @@ export default function AntdConfigProvider({ children }) {
       <ConfigProvider
         theme={{
           cssVar: true,
-          algorithm: light ? theme.defaultAlgorithm : theme.darkAlgorithm,
+          algorithm: light ? antdTheme.defaultAlgorithm : antdTheme.darkAlgorithm,
           token: {
             fontFamily: "Geist",
             colorPrimary: themeMode.primary,
@@ -51,6 +53,10 @@ export default function AntdConfigProvider({ children }) {
           components: {
             Button: {
               primaryColor: light ? "#FFF" : "#18181B",
+              primaryShadow: "none",
+              dangerShadow: "none",
+              defaultShadow: "none",
+              boxShadow: "none",
             },
             Form: {
               verticalLabelPadding: "0 0 4px",
@@ -67,7 +73,7 @@ export default function AntdConfigProvider({ children }) {
               itemPaddingInline: 8,
               itemMarginInline: 8,
               itemBorderRadius: 6,
-              itemHeight: 34,
+              itemHeight: 36,
               itemBg: themeMode.itemBg,
               itemActiveBg: "transparent",
               itemSelectedBg: themeMode.itemSelected,

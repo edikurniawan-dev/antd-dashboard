@@ -1,9 +1,22 @@
+import useThemeStore from "../stores/useThemeStore";
 import { useNavigate } from "react-router";
 import { App, Avatar, Button, ConfigProvider, Dropdown, Flex, Typography } from "antd";
-import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, Settings, Sparkles, UserRound } from "lucide-react";
+import {
+  BadgeCheck,
+  Bell,
+  ChevronsUpDown,
+  CreditCard,
+  LogOutIcon,
+  Moon,
+  Palette,
+  Sparkles,
+  Sun,
+  UserRound,
+} from "lucide-react";
 
 export default function DropdownUser() {
   const { modal } = App.useApp();
+  const { setTheme } = useThemeStore();
   const navigate = useNavigate();
 
   const onLogout = () => {
@@ -65,6 +78,25 @@ export default function DropdownUser() {
       icon: <BadgeCheck size={16} />,
     },
     {
+      key: "theme",
+      label: "Theme",
+      icon: <Palette size={16} style={{ marginTop: 3 }} />,
+      children: [
+        {
+          key: "light",
+          label: "Light",
+          icon: <Sun size={16} />,
+          onClick: () => setTheme("light"),
+        },
+        {
+          key: "dark",
+          label: "Dark",
+          icon: <Moon size={16} />,
+          onClick: () => setTheme("dark"),
+        },
+      ],
+    },
+    {
       key: "billing",
       label: "Billing",
       icon: <CreditCard size={16} />,
@@ -78,33 +110,33 @@ export default function DropdownUser() {
     {
       key: "logout",
       label: "Logout",
-      icon: <Settings size={16} />,
+      icon: <LogOutIcon size={16} />,
       danger: true,
       onClick: onLogout,
     },
   ];
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          lineHeight: "1rem",
-        },
-      }}
-    >
-      <div style={{ margin: 8, height: 50 }}>
-        <Dropdown
-          trigger={["click"]}
-          menu={{
-            items,
+    <div style={{ margin: 8, height: 50 }}>
+      <Dropdown
+        trigger={["click"]}
+        menu={{
+          items,
+        }}
+      >
+        <Button
+          type="text"
+          style={{
+            width: "100%",
+            height: "100%",
+            padding: 8,
           }}
         >
-          <Button
-            type="text"
-            style={{
-              width: "100%",
-              height: "100%",
-              padding: 8,
+          <ConfigProvider
+            theme={{
+              token: {
+                lineHeight: "1rem",
+              },
             }}
           >
             <Flex gap="small" justify="space-between" align="center" style={{ width: "100%" }}>
@@ -112,9 +144,9 @@ export default function DropdownUser() {
 
               <ChevronsUpDown size={16} />
             </Flex>
-          </Button>
-        </Dropdown>
-      </div>
-    </ConfigProvider>
+          </ConfigProvider>
+        </Button>
+      </Dropdown>
+    </div>
   );
 }

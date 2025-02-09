@@ -2,7 +2,8 @@
   font-weight: 600;
 }
 
-.ant-dropdown-menu-item {
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-submenu-title {
   padding: 8px !important;
 }
 
