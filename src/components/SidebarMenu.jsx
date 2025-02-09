@@ -1,6 +1,14 @@
 import { useLocation } from "react-router";
 import { Menu } from "antd";
-import { AppWindowIcon, Home, Minus, Plus, Settings, Settings2, ShieldCheck, UsersRound } from "lucide-react";
+import {
+  HomeIcon,
+  MinusIcon,
+  PlusIcon,
+  Settings2Icon,
+  SettingsIcon,
+  ShieldCheckIcon,
+  UsersRoundIcon,
+} from "lucide-react";
 import { Link } from "react-router";
 
 export default function SidebarMenu() {
@@ -9,70 +17,70 @@ export default function SidebarMenu() {
   const items = [
     {
       key: "0",
-      icon: <Home size={16} />,
+      icon: <HomeIcon size={16} />,
       label: <Link to={"/dashboard"}>Dashboard</Link>,
     },
     {
       key: "1",
-      icon: <UsersRound size={16} />,
+      icon: <UsersRoundIcon size={16} />,
       label: <Link to={"/dashboard/users"}>Users</Link>,
     },
     {
       key: "2",
-      icon: <Settings size={16} />,
+      icon: <SettingsIcon size={16} />,
       label: "Navigation One",
       children: [
         {
           key: "21",
-          icon: <Settings2 size={16} />,
+          icon: <Settings2Icon size={16} />,
           label: "Sub Menu 1",
         },
         {
           key: "22",
-          icon: <Settings2 size={16} />,
+          icon: <Settings2Icon size={16} />,
           label: "Sub Menu 2",
         },
         {
           key: "23",
-          icon: <Settings2 size={16} />,
+          icon: <Settings2Icon size={16} />,
           label: "Sub Menu 3",
           children: [
             {
               key: "231",
               label: "Sub Submenu 1",
-              icon: <ShieldCheck size={16} />,
+              icon: <ShieldCheckIcon size={16} />,
             },
             {
               key: "232",
               label: "Sub Submenu 2",
-              icon: <ShieldCheck size={16} />,
+              icon: <ShieldCheckIcon size={16} />,
             },
             {
               key: "233",
               label: "Sub Submenu 3",
-              icon: <ShieldCheck size={16} />,
+              icon: <ShieldCheckIcon size={16} />,
             },
           ],
         },
         {
           key: "24",
           label: "Sub Menu 4",
-          icon: <Settings2 size={16} />,
+          icon: <Settings2Icon size={16} />,
           children: [
             {
               key: "241",
               label: "Sub Submenu 1",
-              icon: <ShieldCheck size={16} />,
+              icon: <ShieldCheckIcon size={16} />,
             },
             {
               key: "242",
               label: "Sub Submenu 2",
-              icon: <ShieldCheck size={16} />,
+              icon: <ShieldCheckIcon size={16} />,
             },
             {
               key: "243",
               label: "Sub Submenu 3",
-              icon: <ShieldCheck size={16} />,
+              icon: <ShieldCheckIcon size={16} />,
             },
           ],
         },
@@ -80,7 +88,7 @@ export default function SidebarMenu() {
     },
     {
       key: "3",
-      icon: <Settings size={16} />,
+      icon: <SettingsIcon size={16} />,
       label: "Navigation Three",
       children: [
         {
@@ -103,7 +111,7 @@ export default function SidebarMenu() {
     },
     {
       key: "4",
-      icon: <Settings size={16} />,
+      icon: <SettingsIcon size={16} />,
       label: "Navigation Two",
       children: [
         {
@@ -192,7 +200,7 @@ export default function SidebarMenu() {
                 right: 8,
               }}
             >
-              {isOpen ? <Minus size={14} /> : <Plus size={14} />}
+              {isOpen ? <MinusIcon size={14} /> : <PlusIcon size={14} />}
             </div>
           );
         }}

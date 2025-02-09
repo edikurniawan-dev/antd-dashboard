@@ -1,6 +1,6 @@
 import { Breadcrumb, Button, Divider, Drawer, Layout, theme, Typography } from "antd";
 import { useResponsive } from "antd-style";
-import { ChevronRight, PanelLeftClose } from "lucide-react";
+import { ChevronRightIcon, IndentDecreaseIcon, IndentIncreaseIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import SidebarMenu from "../components/SidebarMenu";
@@ -114,7 +114,13 @@ export default function DashboardLayout() {
                 setIsCollapsed(!isCollapsed);
               }}
               type="text"
-              icon={<PanelLeftClose size={16} style={{ marginBottom: -1 }} />}
+              icon={
+                isCollapsed ? (
+                  <IndentIncreaseIcon size={16} style={{ marginBottom: -1 }} />
+                ) : (
+                  <IndentDecreaseIcon size={16} style={{ marginBottom: -1 }} />
+                )
+              }
             />
             <Divider type="vertical" style={{ height: 30, margin: "0 8px 0 4px" }} />
             <Breadcrumb
@@ -126,7 +132,7 @@ export default function DashboardLayout() {
                     alignItems: "center",
                   }}
                 >
-                  <ChevronRight size={14} />
+                  <ChevronRightIcon size={14} />
                 </div>
               }
               items={[

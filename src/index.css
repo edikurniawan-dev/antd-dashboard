@@ -4,12 +4,29 @@
 
 .ant-dropdown-menu-item,
 .ant-dropdown-menu-submenu-title {
-  padding: 8px !important;
+  padding: 7px 8px !important;
+  border-radius: var(--ant-border-radius) !important;
+}
+
+.ant-dropdown-menu-item-selected {
+  color: var(--ant-color-bg-base) !important;
+  background-color: var(--ant-color-primary) !important;
+}
+
+.ant-dropdown-menu-item-selected:hover {
+  background-color: var(--ant-color-primary-hover) !important;
 }
 
 .ant-menu-item,
 .ant-menu-submenu-title {
   padding-left: 8px !important;
+}
+
+.ant-menu-item-selected {
+  background-color: var(--ant-color-primary) !important;
+}
+.ant-menu-item-selected:hover {
+  background-color: var(--ant-color-primary-hover) !important;
 }
 
 .ant-menu-sub {

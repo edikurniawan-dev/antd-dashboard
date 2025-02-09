@@ -2,21 +2,21 @@ import useThemeStore from "../stores/useThemeStore";
 import { useNavigate } from "react-router";
 import { App, Avatar, Button, ConfigProvider, Dropdown, Flex, Typography } from "antd";
 import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
+  BadgeCheckIcon,
+  BellIcon,
+  ChevronsUpDownIcon,
+  CreditCardIcon,
   LogOutIcon,
-  Moon,
-  Palette,
-  Sparkles,
-  Sun,
-  UserRound,
+  MoonIcon,
+  PaletteIcon,
+  SparklesIcon,
+  SunIcon,
+  UserRoundIcon,
 } from "lucide-react";
 
 export default function DropdownUser() {
   const { modal } = App.useApp();
-  const { setTheme } = useThemeStore();
+  const { theme, setTheme } = useThemeStore();
   const navigate = useNavigate();
 
   const onLogout = () => {
@@ -36,25 +36,33 @@ export default function DropdownUser() {
 
   const Detail = () => {
     return (
-      <Flex flex={1} gap="small" align="center" style={{ minWidth: 0 }}>
-        <Avatar shape="square" icon={<UserRound size={20} />} />
-        <Flex vertical flex={1} style={{ minWidth: 0 }}>
-          <Typography.Text strong style={{ textAlign: "start" }}>
-            User
-          </Typography.Text>
-          <Typography.Text
-            style={{
-              fontSize: 12,
-              textAlign: "start",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-            }}
-          >
-            user@acme.inc
-          </Typography.Text>
+      <ConfigProvider
+        theme={{
+          token: {
+            lineHeight: "1rem",
+          },
+        }}
+      >
+        <Flex flex={1} gap="small" align="center" style={{ minWidth: 0 }}>
+          <Avatar shape="square" icon={<UserRoundIcon size={20} />} />
+          <Flex vertical flex={1} style={{ minWidth: 0 }}>
+            <Typography.Text strong style={{ textAlign: "start" }}>
+              User
+            </Typography.Text>
+            <Typography.Text
+              style={{
+                fontSize: 12,
+                textAlign: "start",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              user@acme.inc
+            </Typography.Text>
+          </Flex>
         </Flex>
-      </Flex>
+      </ConfigProvider>
     );
   };
 
@@ -69,29 +77,29 @@ export default function DropdownUser() {
     {
       key: "upgrade-to-pro",
       label: "Upgrade to Pro",
-      icon: <Sparkles size={16} />,
+      icon: <SparklesIcon size={16} />,
     },
     { type: "divider" },
     {
       key: "account",
       label: "Account",
-      icon: <BadgeCheck size={16} />,
+      icon: <BadgeCheckIcon size={16} />,
     },
     {
       key: "theme",
       label: "Theme",
-      icon: <Palette size={16} style={{ marginTop: 3 }} />,
+      icon: <PaletteIcon size={16} style={{ marginTop: 3 }} />,
       children: [
         {
           key: "light",
           label: "Light",
-          icon: <Sun size={16} />,
+          icon: <SunIcon size={16} />,
           onClick: () => setTheme("light"),
         },
         {
           key: "dark",
           label: "Dark",
-          icon: <Moon size={16} />,
+          icon: <MoonIcon size={16} />,
           onClick: () => setTheme("dark"),
         },
       ],
@@ -99,12 +107,12 @@ export default function DropdownUser() {
     {
       key: "billing",
       label: "Billing",
-      icon: <CreditCard size={16} />,
+      icon: <CreditCardIcon size={16} />,
     },
     {
       key: "notification",
       label: "Notification",
-      icon: <Bell size={16} />,
+      icon: <BellIcon size={16} />,
     },
     { type: "divider" },
     {
@@ -122,6 +130,8 @@ export default function DropdownUser() {
         trigger={["click"]}
         menu={{
           items,
+          selectable: true,
+          defaultSelectedKeys: [theme],
         }}
       >
         <Button
@@ -132,19 +142,11 @@ export default function DropdownUser() {
             padding: 8,
           }}
         >
-          <ConfigProvider
-            theme={{
-              token: {
-                lineHeight: "1rem",
-              },
-            }}
-          >
-            <Flex gap="small" justify="space-between" align="center" style={{ width: "100%" }}>
-              <Detail />
+          <Flex gap="small" justify="space-between" align="center" style={{ width: "100%" }}>
+            <Detail />
 
-              <ChevronsUpDown size={16} />
-            </Flex>
-          </ConfigProvider>
+            <ChevronsUpDownIcon size={16} />
+          </Flex>
         </Button>
       </Dropdown>
     </div>

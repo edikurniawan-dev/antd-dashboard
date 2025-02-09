@@ -15,7 +15,6 @@ export default function AntdConfigProvider({ children }) {
         bgLayout: "#FFF",
         link: "#18181B",
         itemBg: "#F9F9FA",
-        itemSelected: "#18181B",
         itemSelectedColor: "#F9F9FA",
       }
     : {
@@ -23,7 +22,6 @@ export default function AntdConfigProvider({ children }) {
         bgLayout: "#000",
         link: "#FFF",
         itemBg: "#18181B",
-        itemSelected: "#FFF",
         itemSelectedColor: "#18181B",
       };
 
@@ -76,7 +74,6 @@ export default function AntdConfigProvider({ children }) {
               itemHeight: 36,
               itemBg: themeMode.itemBg,
               itemActiveBg: "transparent",
-              itemSelectedBg: themeMode.itemSelected,
               itemSelectedColor: themeMode.itemSelectedColor,
             },
           },
